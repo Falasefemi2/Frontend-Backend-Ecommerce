@@ -1,6 +1,9 @@
 import {createClient} from '@sanity/client'
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import imageUrlBuilder from '@sanity/image-url'
+import { formatCurrency } from '../utilities/formatcurrency';
+import { useStateContext } from '../context/stateContext'
+
 
 const client = createClient({
     projectId: '960sslpj',
@@ -15,8 +18,13 @@ const client = createClient({
   export const urlFor = (source) => builder.image(source)
 
 const ProductCard = ({ description, price, image, title }) => {
+  const { addToCart } = useStateContext()
+  const handleAddToCart = () => {
+    addToCart({ description, price, image })
+  }
   
-
+  // const {incQty} = useStateContext()
+  
   return (
     <div className="border border-gray-200 rounded-lg overflow-hidden shadow-md p-3 flex">
       {image && (
@@ -28,9 +36,9 @@ const ProductCard = ({ description, price, image, title }) => {
       <div className="px-4 py-3">
         <h2 className="text-lg font-semibold mb-2">{title}</h2>
         <p className="text-gray-600 mb-2">{description}</p>
-        <p className="text-lg font-semibold mb-2">${price}</p>
-        <button className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
-          <AiOutlineShoppingCart className="inline-block mr-2" />
+        <p className="text-lg font-semibold mb-2">{formatCurrency(price)}</p>
+        <button className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600" onClick={handleAddToCart}>
+          <AiOutlineShoppingCart className="inline-block mr-2"   />
           Add to Cart
         </button>
       </div>

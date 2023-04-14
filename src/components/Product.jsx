@@ -4,6 +4,7 @@ import {useQuery} from 'react-query'
 import LoadingPage from '../pages/LoadingPage'
 import ProductCard from './ProductCard'
 
+
 const client = createClient({
   projectId: '960sslpj',
   dataset: 'production',
