@@ -19,6 +19,7 @@ export default {
             { title: 'Refrigerator', value: 'refrigerator' },
             { title: 'Television', value: 'television' },
             { title: 'Sneakers', value: 'sneakers' },
+            { title: 'Clothes', value: 'clothes' },
           ],
         },
         validation: (Rule) => Rule.required(),
