@@ -32,7 +32,7 @@ const Product = () => {
 
   return (
     <div className="py-8">
-      <div className="max-w-7xl mx-auto px-4">
+      <div className="max-w-7xl mx-auto px-4 py-10">
         <div>
           {products.map((product) => (
             <div key={product._id}>

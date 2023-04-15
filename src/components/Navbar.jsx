@@ -7,7 +7,7 @@ function Navbar() {
   const [isCartOpen, setIsCartOpen] = useState(false)
   const {qty} = useStateContext()
   return (
-    <nav className="bg-gray-900 py-4">
+    <nav className="bg-gray-900 fixed z-[99] w-full py-3">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         <div className="flex-shrink-0">
           <h1 className="text-white font-bold text-lg">FEMISTORE</h1>
@@ -33,7 +33,7 @@ function Navbar() {
             <div className="absolute inset-0 bg-gray-900 opacity-75"></div>
             <div className="absolute inset-y-0 right-0 max-w-full flex">
               <div className="w-96 bg-white px-4 py-6">
-                <CartPages />
+                <CartPages handleClose={() => setIsCartOpen(false)} />
               </div>
             </div>
           </div>

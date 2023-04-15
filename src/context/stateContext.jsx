@@ -12,8 +12,8 @@ export const StateContext = ({children}) => {
     setCartItems([...cartItems, product])
     setQty(qty + 1)
   }
-  
-const handleDecrement = (itemId) => {
+
+  const handleDecrement = (itemId) => {
     const updatedCartItems = [...cartItems]
     const itemIndex = updatedCartItems.findIndex((item) => item._id === itemId)
     updatedCartItems[itemIndex].quantity--
@@ -30,8 +30,25 @@ const handleDecrement = (itemId) => {
     setCartItems(updatedCartItems)
   }
 
+  const getTotalPrice = cartItems.reduce((total, item) => {
+    return total + item.price * item.quantity
+  }, 0)
+
   return (
-    <Context.Provider value={{cartItems, totalPrice, totalQty, qty, addToCart, handleDecrement, handleIncrement}}>{children}</Context.Provider>
+    <Context.Provider
+      value={{
+        cartItems,
+        totalPrice,
+        totalQty,
+        qty,
+        addToCart,
+        handleDecrement,
+        handleIncrement,
+        getTotalPrice,
+      }}
+    >
+      {children}
+    </Context.Provider>
   )
 }
 
